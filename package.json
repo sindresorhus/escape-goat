@@ -1,43 +1,43 @@
 {
-  "name": "escape-goat",
-  "version": "1.0.0",
-  "description": "Escape a string for use in HTML or the inverse",
-  "license": "MIT",
-  "repository": "sindresorhus/escape-goat",
-  "author": {
-    "name": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com"
-  },
-  "engines": {
-    "node": ">=4"
-  },
-  "scripts": {
-    "test": "xo && ava"
-  },
-  "files": [
-    "index.js"
-  ],
-  "keywords": [
-    "escape",
-    "unescape",
-    "html",
-    "entity",
-    "entities",
-    "escaping",
-    "sanitize",
-    "sanitization",
-    "utility",
-    "template",
-    "attribute",
-    "value",
-    "interpolate",
-    "xss",
-    "goat",
-    "🐐"
-  ],
-  "devDependencies": {
-    "ava": "*",
-    "xo": "*"
-  }
+	"name": "escape-goat",
+	"version": "1.0.0",
+	"description": "Escape a string for use in HTML or the inverse",
+	"license": "MIT",
+	"repository": "sindresorhus/escape-goat",
+	"author": {
+		"name": "Sindre Sorhus",
+		"email": "sindresorhus@gmail.com",
+		"url": "sindresorhus.com"
+	},
+	"engines": {
+		"node": ">=4"
+	},
+	"scripts": {
+		"test": "xo && ava"
+	},
+	"files": [
+		"index.js"
+	],
+	"keywords": [
+		"escape",
+		"unescape",
+		"html",
+		"entity",
+		"entities",
+		"escaping",
+		"sanitize",
+		"sanitization",
+		"utility",
+		"template",
+		"attribute",
+		"value",
+		"interpolate",
+		"xss",
+		"goat",
+		"🐐"
+	],
+	"devDependencies": {
+		"ava": "*",
+		"xo": "*"
+	}
 }
