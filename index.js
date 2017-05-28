@@ -17,7 +17,7 @@ const unescapes = new Map([
 ]);
 
 exports.escape = input =>
-	input.replace(/[&<>"']/g, m => escapes.has(m) ? escapes.get(m) : m);
+	input.replace(/[&<>"']/g, m => escapes.get(m) || m);
 
 exports.unescape = input =>
-	input.replace(/&(?:amp|lt|gt|quot|#39);/g, m => unescapes.has(m) ? unescapes.get(m) : m);
+	input.replace(/&(?:amp|lt|gt|quot|#39);/g, m => unescapes.get(m) || m);
