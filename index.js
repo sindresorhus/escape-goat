@@ -1,23 +1,11 @@
 'use strict';
 
-const escapes = new Map([
-	['&', '&amp;'],
-	['<', '&lt;'],
-	['>', '&gt;'],
-	['"', '&quot;'],
-	['\'', '&#39;']
-]);
+const escaped = ['&amp;', '&lt;', '&gt;', '&quot;', '&#39;'];
 
-const unescapes = new Map([
-	['&amp;', '&'],
-	['&lt;', '<'],
-	['&gt;', '>'],
-	['&quot;', '"'],
-	['&#39;', '\'']
-]);
+const unescaped = ['&', '<', '>', '"', '\''];
 
 exports.escape = input =>
-	input.replace(/[&<>"']/g, m => escapes.get(m) || m);
+	input.replace(/[&<>"']/g, m => escaped[unescaped.indexOf(m)]);
 
 exports.unescape = input =>
-	input.replace(/&(?:amp|lt|gt|quot|#39);/g, m => unescapes.get(m) || m);
+	input.replace(/&(?:amp|lt|gt|quot|#39);/g, m => unescaped[escaped.indexOf(m)]);
