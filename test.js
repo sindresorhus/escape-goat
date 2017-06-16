@@ -10,7 +10,7 @@ test('escape', t => {
 test('unescape', t => {
 	t.is(m.unescape('&amp;&lt;&gt;&quot;&#39;'), '&<>"\'');
 	t.is(m.unescape('🦄 &amp; 🐐'), '🦄 & 🐐');
-	t.is(m.unescape('Hello &lt;em&gt;World&lt;/em&gt;'), 'Hello <em>World</em>');
+	t.is(m.unescape('Hello&nbsp;&lt;em&gt;World&lt;/em&gt;'), 'Hello <em>World</em>');
 });
 
 test('escape & unescape', t => {

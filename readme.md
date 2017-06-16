@@ -38,7 +38,7 @@ Escapes the following characters in the given `input` string: `&` `<` `>` `"` `'
 
 ### escapeGoat.unescape(html)
 
-Unescapes the following HTML entities in the given `input` string: `&amp;` `&lt;` `&gt;` `&quot;` `&#39;`
+Unescapes the following HTML entities in the given `input` string: `&amp;` `&lt;` `&gt;` `&quot;` `&#39;` `&nbsp;`
 
 
 ## Tip
