@@ -27,6 +27,14 @@ escapeGoat.unescape('🦄 &amp; 🐐');
 
 escapeGoat.escape('Hello <em>World</em>');
 //=> 'Hello &lt;em&gt;World&lt;/em&gt;'
+
+const foo = '🦄 <> 🐐';
+escapeGoat.escapeTag`bar ${foo} bar`;
+//=> 🦄 &lt;&gt; 🐐
+
+const baz = '&amp; bar';
+escapeGoat.unescapeTag`bar ${baz}`;
+//=> bar & bar
 ```
 
 
@@ -40,6 +48,13 @@ Escapes the following characters in the given `input` string: `&` `<` `>` `"` `'
 
 Unescapes the following HTML entities in the given `input` string: `&amp;` `&lt;` `&gt;` `&quot;` `&#39;`
 
+### escapeGoat.escapeTag`template`
+
+Escapes the following HTML characters in the given `input` template literal string: `&` `<` `>` `"` `'`
+
+### escapeGoat.unescapeTag`template`
+
+Unescapes the following HTML entities in the given `input` template literal string: `&amp;` `&lt;` `&gt;` `&quot;` `&#39;`
 
 ## Tip
 

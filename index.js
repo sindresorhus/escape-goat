@@ -13,3 +13,21 @@ exports.unescape = input => input
 	.replace(/&#39;/g, '\'')
 	.replace(/&lt;/g, '<')
 	.replace(/&gt;/g, '>');
+
+exports.escapeTag = function (input) {
+	const values = [].slice.call(arguments, 1);
+	let output = input[0];
+	for (let i = 0; i < values.length; i++) {
+		output = output + exports.escape(values[i]) + input[i + 1];
+	}
+	return output;
+};
+
+exports.unescapeTag = function (input) {
+	const values = [].slice.call(arguments, 1);
+	let output = input[0];
+	for (let i = 0; i < values.length; i++) {
+		output = output + exports.unescape(values[i]) + input[i + 1];
+	}
+	return output;
+};
