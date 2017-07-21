@@ -28,13 +28,9 @@ escapeGoat.unescape('🦄 &amp; 🐐');
 escapeGoat.escape('Hello <em>World</em>');
 //=> 'Hello &lt;em&gt;World&lt;/em&gt;'
 
-const foo = '🦄 <> 🐐';
-escapeGoat.escapeTag`bar ${foo} bar`;
-//=> 🦄 &lt;&gt; 🐐
-
-const baz = '&amp; bar';
-escapeGoat.unescapeTag`bar ${baz}`;
-//=> bar & bar
+const url = 'https://sindresorhus.com?x="🦄"';
+escapeGoat.escapeTag`<a href="${url}">Unicorn</a>`;
+//=> '<a href="https://sindresorhus.com?x=&quot;🦄&quot;">Unicorn</a>'
 ```
 
 
@@ -44,17 +40,17 @@ escapeGoat.unescapeTag`bar ${baz}`;
 
 Escapes the following characters in the given `input` string: `&` `<` `>` `"` `'`
 
-### escapeGoat.unescape(html)
+### escapeGoat.unescape(input)
 
 Unescapes the following HTML entities in the given `input` string: `&amp;` `&lt;` `&gt;` `&quot;` `&#39;`
 
-### escapeGoat.escapeTag`template`
+### escapeGoat.escapeTag
 
-Escapes the following HTML characters in the given `input` template literal string: `&` `<` `>` `"` `'`
+[Tagged template literal](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals) that escapes interpolated values.
 
-### escapeGoat.unescapeTag`template`
+### escapeGoat.unescapeTag
 
-Unescapes the following HTML entities in the given `input` template literal string: `&amp;` `&lt;` `&gt;` `&quot;` `&#39;`
+[Tagged template literal](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals) that unescapes interpolated values.
 
 ## Tip
 
