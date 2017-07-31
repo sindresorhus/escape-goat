@@ -8,11 +8,11 @@ exports.escape = input => input
 	.replace(/>/g, '&gt;');
 
 exports.unescape = input => input
-	.replace(/&amp;/g, '&')
-	.replace(/&quot;/g, '"')
-	.replace(/&#39;/g, '\'')
+	.replace(/&gt;/g, '>')
 	.replace(/&lt;/g, '<')
-	.replace(/&gt;/g, '>');
+	.replace(/&#39;/g, '\'')
+	.replace(/&quot;/g, '"')
+	.replace(/&amp;/g, '&');
 
 exports.escapeTag = function (input) {
 	const values = [].slice.call(arguments, 1);

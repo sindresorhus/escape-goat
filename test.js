@@ -14,9 +14,8 @@ test('unescape', t => {
 });
 
 test('escape & unescape', t => {
-	const input = '&<>"\'';
-	const actual = m.unescape(m.escape(m.unescape(m.escape(input))));
-	t.is(actual, input);
+	t.is(m.unescape(m.escape('&<>"\'')), '&<>"\'');
+	t.is(m.unescape(m.escape('&quot;')), '&quot;');
 });
 
 test('escapeTag', t => {
