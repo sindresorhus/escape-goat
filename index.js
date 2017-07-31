@@ -15,19 +15,17 @@ exports.unescape = input => input
 	.replace(/&amp;/g, '&');
 
 exports.escapeTag = function (input) {
-	const values = [].slice.call(arguments, 1);
 	let output = input[0];
-	for (let i = 0; i < values.length; i++) {
-		output = output + exports.escape(values[i]) + input[i + 1];
+	for (let i = 1; i < arguments.length; i++) {
+		output = output + exports.escape(arguments[i]) + input[i];
 	}
 	return output;
 };
 
 exports.unescapeTag = function (input) {
-	const values = [].slice.call(arguments, 1);
 	let output = input[0];
-	for (let i = 0; i < values.length; i++) {
-		output = output + exports.unescape(values[i]) + input[i + 1];
+	for (let i = 1; i < arguments.length; i++) {
+		output = output + exports.unescape(arguments[i]) + input[i];
 	}
 	return output;
 };
