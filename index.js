@@ -1,18 +1,20 @@
 'use strict';
 
-exports.escape = input => input
-	.replace(/&/g, '&amp;')
-	.replace(/"/g, '&quot;')
-	.replace(/'/g, '&#39;')
-	.replace(/</g, '&lt;')
-	.replace(/>/g, '&gt;');
+exports.escape = function (input) {
+	return input.replace(/&/g, '&amp;')
+		.replace(/"/g, '&quot;')
+		.replace(/'/g, '&#39;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;');
+};
 
-exports.unescape = input => input
-	.replace(/&gt;/g, '>')
-	.replace(/&lt;/g, '<')
-	.replace(/&#39;/g, '\'')
-	.replace(/&quot;/g, '"')
-	.replace(/&amp;/g, '&');
+exports.unescape = function (input) {
+	return input.replace(/&gt;/g, '>')
+		.replace(/&lt;/g, '<')
+		.replace(/&#39;/g, '\'')
+		.replace(/&quot;/g, '"')
+		.replace(/&amp;/g, '&');
+};
 
 exports.escapeTag = function (input) {
 	let output = input[0];
