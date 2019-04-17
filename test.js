@@ -1,37 +1,37 @@
 import test from 'ava';
-import m from '.';
+import escapeGoat from '.';
 
 test('escape', t => {
-	t.is(m.escape('&<>"\''), '&amp;&lt;&gt;&quot;&#39;');
-	t.is(m.escape('🦄 & 🐐'), '🦄 &amp; 🐐');
-	t.is(m.escape('Hello <em>World</em>'), 'Hello &lt;em&gt;World&lt;/em&gt;');
+	t.is(escapeGoat.escape('&<>"\''), '&amp;&lt;&gt;&quot;&#39;');
+	t.is(escapeGoat.escape('🦄 & 🐐'), '🦄 &amp; 🐐');
+	t.is(escapeGoat.escape('Hello <em>World</em>'), 'Hello &lt;em&gt;World&lt;/em&gt;');
 });
 
 test('unescape', t => {
-	t.is(m.unescape('&amp;&lt;&gt;&quot;&#39;'), '&<>"\'');
-	t.is(m.unescape('🦄 &amp; 🐐'), '🦄 & 🐐');
-	t.is(m.unescape('Hello &lt;em&gt;World&lt;/em&gt;'), 'Hello <em>World</em>');
+	t.is(escapeGoat.unescape('&amp;&lt;&gt;&quot;&#39;'), '&<>"\'');
+	t.is(escapeGoat.unescape('🦄 &amp; 🐐'), '🦄 & 🐐');
+	t.is(escapeGoat.unescape('Hello &lt;em&gt;World&lt;/em&gt;'), 'Hello <em>World</em>');
 });
 
 test('escape & unescape', t => {
-	t.is(m.unescape(m.escape('&<>"\'')), '&<>"\'');
-	t.is(m.unescape(m.escape('&quot;')), '&quot;');
+	t.is(escapeGoat.unescape(escapeGoat.escape('&<>"\'')), '&<>"\'');
+	t.is(escapeGoat.unescape(escapeGoat.escape('&quot;')), '&quot;');
 });
 
 test('escapeTag', t => {
-	t.is(m.escapeTag`foobarz${`&<>"'`}`, 'foobarz&amp;&lt;&gt;&quot;&#39;');
-	t.is(m.escapeTag`🦄 ${'&'} 🐐`, '🦄 &amp; 🐐');
-	t.is(m.escapeTag`Hello <em><>${`<>`}</em>`, 'Hello <em><>&lt;&gt;</em>');
+	t.is(escapeGoat.escapeTag`foobarz${'&<>"\''}`, 'foobarz&amp;&lt;&gt;&quot;&#39;');
+	t.is(escapeGoat.escapeTag`🦄 ${'&'} 🐐`, '🦄 &amp; 🐐');
+	t.is(escapeGoat.escapeTag`Hello <em><>${'<>'}</em>`, 'Hello <em><>&lt;&gt;</em>');
 });
 
 test('unescapeTag', t => {
-	t.is(m.unescapeTag`foobarz${'&amp;&lt;&gt;&quot;&#39;'}`, 'foobarz&<>"\'');
-	t.is(m.unescapeTag`🦄 ${'&amp;'} 🐐`, '🦄 & 🐐');
-	t.is(m.unescapeTag`Hello <em><>${`&lt;&gt;`}</em>`, 'Hello <em><><></em>');
+	t.is(escapeGoat.unescapeTag`foobarz${'&amp;&lt;&gt;&quot;&#39;'}`, 'foobarz&<>"\'');
+	t.is(escapeGoat.unescapeTag`🦄 ${'&amp;'} 🐐`, '🦄 & 🐐');
+	t.is(escapeGoat.unescapeTag`Hello <em><>${'&lt;&gt;'}</em>`, 'Hello <em><><></em>');
 });
 
 test('escapeTag & unescapeTag', t => {
 	const input = '&<>"\'';
-	const actual = m.unescapeTag`${m.escapeTag`${input}`}`;
+	const actual = escapeGoat.unescapeTag`${escapeGoat.escapeTag`${input}`}`;
 	t.is(actual, input);
 });
