@@ -39,6 +39,7 @@ export function unescape(htmlString: string): string;
 import {escapeTag} from 'escape-goat';
 
 const url = 'https://sindresorhus.com?x="🦄"';
+
 escapeTag`<a href="${url}">Unicorn</a>`;
 //=> '<a href="https://sindresorhus.com?x=&quot;🦄&quot;">Unicorn</a>'
 ```
@@ -53,6 +54,7 @@ export function escapeTag(template: TemplateStringsArray, ...substitutions: read
 import {unescapeTag} from 'escape-goat';
 
 const escapedUrl = 'https://sindresorhus.com?x=&quot;🦄&quot;';
+
 unescapeTag`Url from HTML: ${url}`;
 //=> 'Url from HTML: https://sindresorhus.com?x="🦄"'
 ```
