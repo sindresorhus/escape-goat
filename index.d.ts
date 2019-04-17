@@ -5,16 +5,16 @@ Escapes the following characters in the given `string` argument: `&` `<` `>` `"`
 
 @example
 ```
-import {escape} from 'escape-goat';
+import {htmlEscape} from 'escape-goat';
 
-escape('🦄 & 🐐');
+htmlEscape('🦄 & 🐐');
 //=> '🦄 &amp; 🐐'
 
-escape('Hello <em>World</em>');
+htmlEscape('Hello <em>World</em>');
 //=> 'Hello &lt;em&gt;World&lt;/em&gt;'
 ```
 */
-export function escape(string: string): string;
+export function htmlEscape(string: string): string;
 
 /**
 Unescape an HTML string to use as a plain string.
@@ -23,40 +23,40 @@ Unescapes the following HTML entities in the given `htmlString` argument: `&amp;
 
 @example
 ```
-import {unescape} from 'escape-goat';
+import {htmlUnescape} from 'escape-goat';
 
-unescape('🦄 &amp; 🐐');
+htmlUnescape('🦄 &amp; 🐐');
 //=> '🦄 & 🐐'
 ```
 */
-export function unescape(htmlString: string): string;
+export function htmlUnescape(htmlString: string): string;
 
 /**
 [Tagged template literal](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals) that escapes interpolated values.
 
 @example
 ```
-import {escapeTag} from 'escape-goat';
+import {htmlEscapeTag} from 'escape-goat';
 
 const url = 'https://sindresorhus.com?x="🦄"';
 
-escapeTag`<a href="${url}">Unicorn</a>`;
+htmlEscapeTag`<a href="${url}">Unicorn</a>`;
 //=> '<a href="https://sindresorhus.com?x=&quot;🦄&quot;">Unicorn</a>'
 ```
 */
-export function escapeTag(template: TemplateStringsArray, ...substitutions: readonly unknown[]): string;
+export function htmlEscapeTag(template: TemplateStringsArray, ...substitutions: readonly unknown[]): string;
 
 /**
 [Tagged template literal](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals) that unescapes interpolated values.
 
 @example
 ```
-import {unescapeTag} from 'escape-goat';
+import {htmlUnescapeTag} from 'escape-goat';
 
 const escapedUrl = 'https://sindresorhus.com?x=&quot;🦄&quot;';
 
-unescapeTag`Url from HTML: ${url}`;
-//=> 'Url from HTML: https://sindresorhus.com?x="🦄"'
+htmlUnescapeTag`URL from HTML: ${url}`;
+//=> 'URL from HTML: https://sindresorhus.com?x="🦄"'
 ```
 */
-export function unescapeTag(template: TemplateStringsArray, ...substitutions: readonly unknown[]): string;
+export function htmlUnescapeTag(template: TemplateStringsArray, ...substitutions: readonly unknown[]): string;

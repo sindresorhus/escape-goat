@@ -1,37 +1,37 @@
 import test from 'ava';
-import {escape, unescape, escapeTag, unescapeTag} from '.';
+import {htmlEscape, htmlUnescape, htmlEscapeTag, htmlUnescapeTag} from '.';
 
-test('escape', t => {
-	t.is(escape('&<>"\''), '&amp;&lt;&gt;&quot;&#39;');
-	t.is(escape('🦄 & 🐐'), '🦄 &amp; 🐐');
-	t.is(escape('Hello <em>World</em>'), 'Hello &lt;em&gt;World&lt;/em&gt;');
+test('htmlEscape', t => {
+	t.is(htmlEscape('&<>"\''), '&amp;&lt;&gt;&quot;&#39;');
+	t.is(htmlEscape('🦄 & 🐐'), '🦄 &amp; 🐐');
+	t.is(htmlEscape('Hello <em>World</em>'), 'Hello &lt;em&gt;World&lt;/em&gt;');
 });
 
-test('unescape', t => {
-	t.is(unescape('&amp;&lt;&gt;&quot;&#39;'), '&<>"\'');
-	t.is(unescape('🦄 &amp; 🐐'), '🦄 & 🐐');
-	t.is(unescape('Hello &lt;em&gt;World&lt;/em&gt;'), 'Hello <em>World</em>');
+test('htmlUnescape', t => {
+	t.is(htmlUnescape('&amp;&lt;&gt;&quot;&#39;'), '&<>"\'');
+	t.is(htmlUnescape('🦄 &amp; 🐐'), '🦄 & 🐐');
+	t.is(htmlUnescape('Hello &lt;em&gt;World&lt;/em&gt;'), 'Hello <em>World</em>');
 });
 
-test('escape & unescape', t => {
-	t.is(unescape(escape('&<>"\'')), '&<>"\'');
-	t.is(unescape(escape('&quot;')), '&quot;');
+test('htmlEscape & htmlUnescape', t => {
+	t.is(htmlUnescape(htmlEscape('&<>"\'')), '&<>"\'');
+	t.is(htmlUnescape(htmlEscape('&quot;')), '&quot;');
 });
 
-test('escapeTag', t => {
-	t.is(escapeTag`foobarz${'&<>"\''}`, 'foobarz&amp;&lt;&gt;&quot;&#39;');
-	t.is(escapeTag`🦄 ${'&'} 🐐`, '🦄 &amp; 🐐');
-	t.is(escapeTag`Hello <em><>${'<>'}</em>`, 'Hello <em><>&lt;&gt;</em>');
+test('htmlEscapeTag', t => {
+	t.is(htmlEscapeTag`foobarz${'&<>"\''}`, 'foobarz&amp;&lt;&gt;&quot;&#39;');
+	t.is(htmlEscapeTag`🦄 ${'&'} 🐐`, '🦄 &amp; 🐐');
+	t.is(htmlEscapeTag`Hello <em><>${'<>'}</em>`, 'Hello <em><>&lt;&gt;</em>');
 });
 
-test('unescapeTag', t => {
-	t.is(unescapeTag`foobarz${'&amp;&lt;&gt;&quot;&#39;'}`, 'foobarz&<>"\'');
-	t.is(unescapeTag`🦄 ${'&amp;'} 🐐`, '🦄 & 🐐');
-	t.is(unescapeTag`Hello <em><>${'&lt;&gt;'}</em>`, 'Hello <em><><></em>');
+test('htmlUnescapeTag', t => {
+	t.is(htmlUnescapeTag`foobarz${'&amp;&lt;&gt;&quot;&#39;'}`, 'foobarz&<>"\'');
+	t.is(htmlUnescapeTag`🦄 ${'&amp;'} 🐐`, '🦄 & 🐐');
+	t.is(htmlUnescapeTag`Hello <em><>${'&lt;&gt;'}</em>`, 'Hello <em><><></em>');
 });
 
-test('escapeTag & unescapeTag', t => {
+test('htmlEscapeTag & htmlUnescapeTag', t => {
 	const input = '&<>"\'';
-	const actual = unescapeTag`${escapeTag`${input}`}`;
+	const actual = htmlUnescapeTag`${htmlEscapeTag`${input}`}`;
 	t.is(actual, input);
 });
