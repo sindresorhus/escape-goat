@@ -31,6 +31,10 @@ escapeGoat.escape('Hello <em>World</em>');
 const url = 'https://sindresorhus.com?x="🦄"';
 escapeGoat.escapeTag`<a href="${url}">Unicorn</a>`;
 //=> '<a href="https://sindresorhus.com?x=&quot;🦄&quot;">Unicorn</a>'
+
+const escapedUrl = 'https://sindresorhus.com?x=&quot;🦄&quot;';
+escapeGoat.unescapeTag`Url from HTML: ${url}`;
+//=> 'Url from HTML: https://sindresorhus.com?x="🦄"'
 ```
 
 
@@ -38,11 +42,11 @@ escapeGoat.escapeTag`<a href="${url}">Unicorn</a>`;
 
 ### escapeGoat.escape(string)
 
-Escapes the following characters in the given `string` string: `&` `<` `>` `"` `'`
+Escapes the following characters in the given `string` argument: `&` `<` `>` `"` `'`
 
 ### escapeGoat.unescape(htmlString)
 
-Unescapes the following HTML entities in the given `htmlString` string: `&amp;` `&lt;` `&gt;` `&quot;` `&#39;`
+Unescapes the following HTML entities in the given `htmlString` argument: `&amp;` `&lt;` `&gt;` `&quot;` `&#39;`
 
 ### escapeGoat.escapeTag
 
