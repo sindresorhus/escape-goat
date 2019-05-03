@@ -24,10 +24,22 @@ test('htmlEscapeTag', t => {
 	t.is(htmlEscapeTag`Hello <em><>${'<>'}</em>`, 'Hello <em><>&lt;&gt;</em>');
 });
 
+test.failing('htmlEscapeTag non-strings', t => {
+	t.is(htmlEscapeTag`foobarz${undefined}`, 'foobarz');
+	t.is(htmlEscapeTag`🦄 ${true}`, '🦄 ');
+	t.is(htmlEscapeTag`Hello <em><>${1}</em>`, 'Hello <em><>1</em>');
+});
+
 test('htmlUnescapeTag', t => {
 	t.is(htmlUnescapeTag`foobarz${'&amp;&lt;&gt;&quot;&#39;'}`, 'foobarz&<>"\'');
 	t.is(htmlUnescapeTag`🦄 ${'&amp;'} 🐐`, '🦄 & 🐐');
 	t.is(htmlUnescapeTag`Hello <em><>${'&lt;&gt;'}</em>`, 'Hello <em><><></em>');
+});
+
+test.failing('htmlUnescapeTag non-strings', t => {
+	t.is(htmlUnescapeTag`foobarz${undefined}`, 'foobarz');
+	t.is(htmlUnescapeTag`🦄 ${true}`, '🦄 ');
+	t.is(htmlUnescapeTag`Hello <em><>${1}</em>`, 'Hello <em><>1</em>');
 });
 
 test('htmlEscapeTag & htmlUnescapeTag', t => {
