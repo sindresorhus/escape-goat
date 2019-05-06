@@ -24,7 +24,7 @@ test('htmlEscapeTag', t => {
 	t.is(htmlEscapeTag`Hello <em><>${'<>'}</em>`, 'Hello <em><>&lt;&gt;</em>');
 });
 
-test.failing('htmlEscapeTag non-strings', t => {
+test('htmlEscapeTag non-strings', t => {
 	t.is(htmlEscapeTag`foobarz${undefined}`, 'foobarzundefined');
 	t.is(htmlEscapeTag`🦄 ${true}`, '🦄 true');
 	t.is(htmlEscapeTag`Hello <em><>${1}</em>`, 'Hello <em><>1</em>');
@@ -36,7 +36,7 @@ test('htmlUnescapeTag', t => {
 	t.is(htmlUnescapeTag`Hello <em><>${'&lt;&gt;'}</em>`, 'Hello <em><><></em>');
 });
 
-test.failing('htmlUnescapeTag non-strings', t => {
+test('htmlUnescapeTag non-strings', t => {
 	t.is(htmlUnescapeTag`foobarz${undefined}`, 'foobarzundefined');
 	t.is(htmlUnescapeTag`🦄 ${true}`, '🦄 true');
 	t.is(htmlUnescapeTag`Hello <em><>${1}</em>`, 'Hello <em><>1</em>');
