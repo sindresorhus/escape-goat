@@ -1,13 +1,13 @@
 'use strict';
 
-exports.htmlEscape = string => string
+exports.htmlEscape = string => String(string)
 	.replace(/&/g, '&amp;')
 	.replace(/"/g, '&quot;')
 	.replace(/'/g, '&#39;')
 	.replace(/</g, '&lt;')
 	.replace(/>/g, '&gt;');
 
-exports.htmlUnescape = htmlString => htmlString
+exports.htmlUnescape = htmlString => String(htmlString)
 	.replace(/&gt;/g, '>')
 	.replace(/&lt;/g, '<')
 	.replace(/&#39;/g, '\'')
