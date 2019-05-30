@@ -17,7 +17,7 @@ exports.htmlUnescape = htmlString => htmlString
 exports.htmlEscapeTag = (strings, ...values) => {
 	let output = strings[0];
 	for (let i = 0; i < values.length; i++) {
-		output = output + exports.htmlEscape(values[i]) + strings[i + 1];
+		output = output + exports.htmlEscape(String(values[i])) + strings[i + 1];
 	}
 
 	return output;
@@ -26,7 +26,7 @@ exports.htmlEscapeTag = (strings, ...values) => {
 exports.htmlUnescapeTag = (strings, ...values) => {
 	let output = strings[0];
 	for (let i = 0; i < values.length; i++) {
-		output = output + exports.htmlUnescape(values[i]) + strings[i + 1];
+		output = output + exports.htmlUnescape(String(values[i])) + strings[i + 1];
 	}
 
 	return output;
