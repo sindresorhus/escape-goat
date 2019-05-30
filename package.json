@@ -1,6 +1,6 @@
 {
 	"name": "escape-goat",
-	"version": "2.0.0",
+	"version": "2.1.0",
 	"description": "Escape a string for use in HTML or the inverse",
 	"license": "MIT",
 	"repository": "sindresorhus/escape-goat",
