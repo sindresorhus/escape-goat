@@ -36,27 +36,27 @@ export function htmlUnescape(htmlString: string): string;
 
 @example
 ```
-import {htmlEscapeTag} from 'escape-goat';
+import {htmlEscape} from 'escape-goat';
 
 const url = 'https://sindresorhus.com?x="🦄"';
 
-htmlEscapeTag`<a href="${url}">Unicorn</a>`;
+htmlEscape`<a href="${url}">Unicorn</a>`;
 //=> '<a href="https://sindresorhus.com?x=&quot;🦄&quot;">Unicorn</a>'
 ```
 */
-export function htmlEscapeTag(template: TemplateStringsArray, ...substitutions: readonly unknown[]): string;
+export function htmlEscape(template: TemplateStringsArray, ...substitutions: readonly unknown[]): string;
 
 /**
 [Tagged template literal](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals) that unescapes interpolated values.
 
 @example
 ```
-import {htmlUnescapeTag} from 'escape-goat';
+import {htmlUnescape} from 'escape-goat';
 
 const escapedUrl = 'https://sindresorhus.com?x=&quot;🦄&quot;';
 
-htmlUnescapeTag`URL from HTML: ${url}`;
+htmlUnescape`URL from HTML: ${url}`;
 //=> 'URL from HTML: https://sindresorhus.com?x="🦄"'
 ```
 */
-export function htmlUnescapeTag(template: TemplateStringsArray, ...substitutions: readonly unknown[]): string;
+export function htmlUnescape(template: TemplateStringsArray, ...substitutions: readonly unknown[]): string;
