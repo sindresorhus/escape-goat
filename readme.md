@@ -46,13 +46,13 @@ htmlUnescape`URL from HTML: ${url}`;
 
 Escapes the following characters in the given `string` argument: `&` `<` `>` `"` `'`
 
-The function also works as [Tagged template literal](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals) that escapes interpolated values.
+The function also works as a [tagged template literal](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals) that escapes interpolated values.
 
 ### htmlUnescape(htmlString)
 
 Unescapes the following HTML entities in the given `htmlString` argument: `&amp;` `&lt;` `&gt;` `&quot;` `&#39;`
 
-The function also works as [Tagged template literal](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals) that escapes interpolated values.
+The function also works as a [tagged template literal](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals) that escapes interpolated values.
 
 
 ## Tip
