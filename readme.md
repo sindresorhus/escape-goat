@@ -17,7 +17,7 @@ $ npm install escape-goat
 ## Usage
 
 ```js
-const {htmlEscape, htmlUnescape, htmlEscapeTag, htmlUnescapeTag} = require('escape-goat');
+const {htmlEscape, htmlUnescape} = require('escape-goat');
 
 htmlEscape('🦄 & 🐐');
 //=> '🦄 &amp; 🐐'
@@ -30,12 +30,12 @@ htmlEscape('Hello <em>World</em>');
 
 const url = 'https://sindresorhus.com?x="🦄"';
 
-htmlEscapeTag`<a href="${url}">Unicorn</a>`;
+htmlEscape`<a href="${url}">Unicorn</a>`;
 //=> '<a href="https://sindresorhus.com?x=&quot;🦄&quot;">Unicorn</a>'
 
 const escapedUrl = 'https://sindresorhus.com?x=&quot;🦄&quot;';
 
-htmlUnescapeTag`URL from HTML: ${url}`;
+htmlUnescape`URL from HTML: ${url}`;
 //=> 'URL from HTML: https://sindresorhus.com?x="🦄"'
 ```
 
@@ -46,17 +46,13 @@ htmlUnescapeTag`URL from HTML: ${url}`;
 
 Escapes the following characters in the given `string` argument: `&` `<` `>` `"` `'`
 
+The function also works as a [tagged template literal](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals) that escapes interpolated values.
+
 ### htmlUnescape(htmlString)
 
 Unescapes the following HTML entities in the given `htmlString` argument: `&amp;` `&lt;` `&gt;` `&quot;` `&#39;`
 
-### htmlEscapeTag
-
-[Tagged template literal](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals) that escapes interpolated values.
-
-### htmlUnescapeTag
-
-[Tagged template literal](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals) that unescapes interpolated values.
+The function also works as a [tagged template literal](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals) that escapes interpolated values.
 
 
 ## Tip

@@ -1,5 +1,5 @@
 import test from 'ava';
-import {htmlEscape, htmlUnescape, htmlEscapeTag, htmlUnescapeTag} from '.';
+import {htmlEscape, htmlUnescape} from '.';
 
 test('htmlEscape', t => {
 	t.is(htmlEscape('&<>"\''), '&amp;&lt;&gt;&quot;&#39;');
@@ -18,32 +18,32 @@ test('htmlEscape & htmlUnescape', t => {
 	t.is(htmlUnescape(htmlEscape('&quot;')), '&quot;');
 });
 
-test('htmlEscapeTag', t => {
-	t.is(htmlEscapeTag`foobarz${'&<>"\''}`, 'foobarz&amp;&lt;&gt;&quot;&#39;');
-	t.is(htmlEscapeTag`🦄 ${'&'} 🐐`, '🦄 &amp; 🐐');
-	t.is(htmlEscapeTag`Hello <em><>${'<>'}</em>`, 'Hello <em><>&lt;&gt;</em>');
+test('htmlEscape as template tag', t => {
+	t.is(htmlEscape`foobarz${'&<>"\''}`, 'foobarz&amp;&lt;&gt;&quot;&#39;');
+	t.is(htmlEscape`🦄 ${'&'} 🐐`, '🦄 &amp; 🐐');
+	t.is(htmlEscape`Hello <em><>${'<>'}</em>`, 'Hello <em><>&lt;&gt;</em>');
 });
 
-test('htmlEscapeTag non-strings', t => {
-	t.is(htmlEscapeTag`foobarz${undefined}`, 'foobarzundefined');
-	t.is(htmlEscapeTag`🦄 ${true}`, '🦄 true');
-	t.is(htmlEscapeTag`Hello <em><>${1}</em>`, 'Hello <em><>1</em>');
+test('htmlEscape as template tag with non-strings', t => {
+	t.is(htmlEscape`foobarz${undefined}`, 'foobarzundefined');
+	t.is(htmlEscape`🦄 ${true}`, '🦄 true');
+	t.is(htmlEscape`Hello <em><>${1}</em>`, 'Hello <em><>1</em>');
 });
 
-test('htmlUnescapeTag', t => {
-	t.is(htmlUnescapeTag`foobarz${'&amp;&lt;&gt;&quot;&#39;'}`, 'foobarz&<>"\'');
-	t.is(htmlUnescapeTag`🦄 ${'&amp;'} 🐐`, '🦄 & 🐐');
-	t.is(htmlUnescapeTag`Hello <em><>${'&lt;&gt;'}</em>`, 'Hello <em><><></em>');
+test('htmlUnescape as template tag', t => {
+	t.is(htmlUnescape`foobarz${'&amp;&lt;&gt;&quot;&#39;'}`, 'foobarz&<>"\'');
+	t.is(htmlUnescape`🦄 ${'&amp;'} 🐐`, '🦄 & 🐐');
+	t.is(htmlUnescape`Hello <em><>${'&lt;&gt;'}</em>`, 'Hello <em><><></em>');
 });
 
-test('htmlUnescapeTag non-strings', t => {
-	t.is(htmlUnescapeTag`foobarz${undefined}`, 'foobarzundefined');
-	t.is(htmlUnescapeTag`🦄 ${true}`, '🦄 true');
-	t.is(htmlUnescapeTag`Hello <em><>${1}</em>`, 'Hello <em><>1</em>');
+test('htmlUnescape as template tag on non-strings', t => {
+	t.is(htmlUnescape`foobarz${undefined}`, 'foobarzundefined');
+	t.is(htmlUnescape`🦄 ${true}`, '🦄 true');
+	t.is(htmlUnescape`Hello <em><>${1}</em>`, 'Hello <em><>1</em>');
 });
 
-test('htmlEscapeTag & htmlUnescapeTag', t => {
+test('htmlEscape & htmlUnescape as template tags', t => {
 	const input = '&<>"\'';
-	const actual = htmlUnescapeTag`${htmlEscapeTag`${input}`}`;
+	const actual = htmlUnescape`${htmlEscape`${input}`}`;
 	t.is(actual, input);
 });
