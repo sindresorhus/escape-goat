@@ -6,13 +6,11 @@
 
 [![Build Status](https://travis-ci.org/sindresorhus/escape-goat.svg?branch=master)](https://travis-ci.org/sindresorhus/escape-goat)
 
-
 ## Install
 
 ```
 $ npm install escape-goat
 ```
-
 
 ## Usage
 
@@ -39,7 +37,6 @@ htmlUnescape`URL from HTML: ${url}`;
 //=> 'URL from HTML: https://sindresorhus.com?x="🦄"'
 ```
 
-
 ## API
 
 ### htmlEscape(string)
@@ -52,21 +49,14 @@ The function also works as a [tagged template literal](https://developer.mozilla
 
 Unescapes the following HTML entities in the given `htmlString` argument: `&amp;` `&lt;` `&gt;` `&quot;` `&#39;`
 
-The function also works as a [tagged template literal](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals) that escapes interpolated values.
-
+The function also works as a [tagged template literal](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals) that unescapes interpolated values.
 
 ## Tip
 
 Ensure you always quote your HTML attributes to prevent possible [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting).
-
 
 ## FAQ
 
 ### Why yet another HTML escaping package?
 
 I couldn't find one I liked that was tiny, well-tested, and had both `.escape()` and `.unescape()`.
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)

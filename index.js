@@ -20,8 +20,8 @@ exports.htmlEscape = (strings, ...values) => {
 	}
 
 	let output = strings[0];
-	for (let i = 0; i < values.length; i++) {
-		output = output + htmlEscape(String(values[i])) + strings[i + 1];
+	for (const [index, value] of values.entries()) {
+		output = output + htmlEscape(String(value)) + strings[index + 1];
 	}
 
 	return output;
@@ -33,8 +33,8 @@ exports.htmlUnescape = (strings, ...values) => {
 	}
 
 	let output = strings[0];
-	for (let i = 0; i < values.length; i++) {
-		output = output + htmlUnescape(String(values[i])) + strings[i + 1];
+	for (const [index, value] of values.entries()) {
+		output = output + htmlUnescape(String(value)) + strings[index + 1];
 	}
 
 	return output;
