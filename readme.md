@@ -33,7 +33,7 @@ htmlEscape`<a href="${url}">Unicorn</a>`;
 
 const escapedUrl = 'https://sindresorhus.com?x=&quot;🦄&quot;';
 
-htmlUnescape`URL from HTML: ${url}`;
+htmlUnescape`URL from HTML: ${escapedUrl}`;
 //=> 'URL from HTML: https://sindresorhus.com?x="🦄"'
 ```
 
