@@ -4,8 +4,6 @@
 
 > Escape a string for use in HTML or the inverse
 
-[![Build Status](https://travis-ci.org/sindresorhus/escape-goat.svg?branch=master)](https://travis-ci.org/sindresorhus/escape-goat)
-
 ## Install
 
 ```
