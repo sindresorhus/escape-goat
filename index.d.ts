@@ -17,21 +17,6 @@ htmlEscape('Hello <em>World</em>');
 export function htmlEscape(string: string): string;
 
 /**
-Unescape an HTML string to use as a plain string.
-
-Unescapes the following HTML entities in the given `htmlString` argument: `&amp;` `&lt;` `&gt;` `&quot;` `&#39;`.
-
-@example
-```
-import {htmlUnescape} from 'escape-goat';
-
-htmlUnescape('🦄 &amp; 🐐');
-//=> '🦄 & 🐐'
-```
-*/
-export function htmlUnescape(htmlString: string): string;
-
-/**
 [Tagged template literal](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals) that escapes interpolated values.
 
 @example
@@ -45,6 +30,21 @@ htmlEscape`<a href="${url}">Unicorn</a>`;
 ```
 */
 export function htmlEscape(template: TemplateStringsArray, ...substitutions: readonly unknown[]): string;
+
+/**
+Unescape an HTML string to use as a plain string.
+
+Unescapes the following HTML entities in the given `htmlString` argument: `&amp;` `&lt;` `&gt;` `&quot;` `&#39;`.
+
+@example
+```
+import {htmlUnescape} from 'escape-goat';
+
+htmlUnescape('🦄 &amp; 🐐');
+//=> '🦄 & 🐐'
+```
+*/
+export function htmlUnescape(htmlString: string): string;
 
 /**
 [Tagged template literal](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals) that unescapes interpolated values.

@@ -8,10 +8,12 @@
 	"author": {
 		"name": "Sindre Sorhus",
 		"email": "sindresorhus@gmail.com",
-		"url": "sindresorhus.com"
+		"url": "https://sindresorhus.com"
 	},
+	"type": "module",
+	"exports": "./index.js",
 	"engines": {
-		"node": ">=10"
+		"node": ">=12"
 	},
 	"scripts": {
 		"test": "xo && ava && tsd"
@@ -39,8 +41,8 @@
 		"🐐"
 	],
 	"devDependencies": {
-		"ava": "^2.4.0",
-		"tsd": "^0.11.0",
-		"xo": "^0.25.3"
+		"ava": "^3.15.0",
+		"tsd": "^0.14.0",
+		"xo": "^0.38.2"
 	}
 }

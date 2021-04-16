@@ -1,5 +1,5 @@
 import test from 'ava';
-import {htmlEscape, htmlUnescape} from '.';
+import {htmlEscape, htmlUnescape} from './index.js';
 
 test('htmlEscape', t => {
 	t.is(htmlEscape('&<>"\''), '&amp;&lt;&gt;&quot;&#39;');

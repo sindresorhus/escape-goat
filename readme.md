@@ -13,7 +13,7 @@ $ npm install escape-goat
 ## Usage
 
 ```js
-const {htmlEscape, htmlUnescape} = require('escape-goat');
+import {htmlEscape, htmlUnescape} from 'escape-goat';
 
 htmlEscape('🦄 & 🐐');
 //=> '🦄 &amp; 🐐'
@@ -57,4 +57,4 @@ Ensure you always quote your HTML attributes to prevent possible [XSS](https://e
 
 ### Why yet another HTML escaping package?
 
-I couldn't find one I liked that was tiny, well-tested, and had both `.escape()` and `.unescape()`.
+I couldn't find one I liked that was tiny, well-tested, and had both escape and unescape methods.

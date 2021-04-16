@@ -1,5 +1,5 @@
 import {expectType} from 'tsd';
-import {htmlEscape, htmlUnescape} from '.';
+import {htmlEscape, htmlUnescape} from './index.js';
 
 expectType<string>(htmlEscape('🦄 & 🐐'));
 expectType<string>(htmlUnescape('🦄 &amp; 🐐'));
