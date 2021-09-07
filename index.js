@@ -1,3 +1,4 @@
+// Escaping/unescaping of "&" must happen first and last respectively in order to avoid escaping/unescaping it twice
 const _htmlEscape = string => string
 	.replace(/&/g, '&amp;')
 	.replace(/"/g, '&quot;')
