@@ -1,6 +1,7 @@
-// Escaping/unescaping of "&" must happen first and last respectively in order to avoid escaping/unescaping it twice
+// Multiple replace() calls are actually faster than using replacer functions #2
+// TODO: Use replaceAll when targeting Node v15+
 const _htmlEscape = string => string
-	.replace(/&/g, '&amp;')
+	.replace(/&/g, '&amp;') // Must happen first or else it will escape other just-escaped characters
 	.replace(/"/g, '&quot;')
 	.replace(/'/g, '&#39;')
 	.replace(/</g, '&lt;')
@@ -11,7 +12,7 @@ const _htmlUnescape = htmlString => htmlString
 	.replace(/&lt;/g, '<')
 	.replace(/&#0?39;/g, '\'')
 	.replace(/&quot;/g, '"')
-	.replace(/&amp;/g, '&');
+	.replace(/&amp;/g, '&'); // Must happen last or else it will unescape other characters in the wrong order
 
 export function htmlEscape(strings, ...values) {
 	if (typeof strings === 'string') {
