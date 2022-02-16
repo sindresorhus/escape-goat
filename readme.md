@@ -41,6 +41,8 @@ htmlUnescape`URL from HTML: ${escapedUrl}`;
 
 Escapes the following characters in the given `string` argument: `&` `<` `>` `"` `'`
 
+Note: This method of escaping is only safe when inserting data into normal tags like `body`, `div`, `p`, `b`, and `td`. Inserting `htmlEscape`d data into other tags (for example `script` or `style`) **opens your application to XSS vulnerabilities** and should be avoided. For more information, see [OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html#rule-0-never-insert-untrusted-data-except-in-allowed-locations).
+
 The function also works as a [tagged template literal](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals) that escapes interpolated values.
 
 ### htmlUnescape(htmlString)
