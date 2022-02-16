@@ -43,6 +43,8 @@ Escapes the following characters in the given `string` argument: `&` `<` `>` `"`
 
 The function also works as a [tagged template literal](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals) that escapes interpolated values.
 
+**Note:** This method of escaping is only safe when inserting data into normal tags like `body`, `div`, `p`, `b`, `td`, etc. Inserting `htmlEscape`'d data into tags like `script` and `style` **opens your app to [XSS vulnerabilities](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html#rule-0-never-insert-untrusted-data-except-in-allowed-locations)**.
+
 ### htmlUnescape(htmlString)
 
 Unescapes the following HTML entities in the given `htmlString` argument: `&amp;` `&lt;` `&gt;` `&quot;` `&#39;`
