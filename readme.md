@@ -6,8 +6,8 @@
 
 ## Install
 
-```
-$ npm install escape-goat
+```sh
+npm install escape-goat
 ```
 
 ## Usage
