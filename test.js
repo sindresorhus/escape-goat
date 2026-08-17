@@ -47,3 +47,14 @@ test('htmlEscape & htmlUnescape as template tags', t => {
 	const actual = htmlUnescape`${htmlEscape`${input}`}`;
 	t.is(actual, input);
 });
+
+test('escapeComment', t => {
+	t.is(escapeComment('user supplied --> close'), 'user supplied --\u003e close');
+	t.is(escapeComment('<!-- open'), '\u003c!-- open');
+	t.is(escapeComment('a < b > c'), 'a \u003c b \u003e c');
+});
+
+test('escapeComment as template tag', t => {
+	t.is(escapeComment`<!-- ${'break --> out'} -->`, '<!-- break --\u003e out -->');
+	t.is(escapeComment`${'<!-- evil'}`, '\u003c!-- evil');
+});

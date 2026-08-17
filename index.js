@@ -14,6 +14,13 @@ const _htmlUnescape = htmlString => htmlString
 	.replace(/&quot;/g, '"')
 	.replace(/&amp;/g, '&'); // Must happen last or else it will unescape other characters in the wrong order.
 
+// Escape characters that would let interpolated text break out of (or open) an
+// HTML comment. `<` and `>` are encoded to their `\u` escape sequences, which
+// render as the same glyphs but are no longer parsed as comment delimiters.
+const _commentEscape = string => string
+	.replace(/</g, '\\u003c')
+	.replace(/>/g, '\\u003e');
+
 export function htmlEscape(strings, ...values) {
 	if (typeof strings === 'string') {
 		return _htmlEscape(strings);
@@ -35,6 +42,19 @@ export function htmlUnescape(strings, ...values) {
 	let output = strings[0];
 	for (const [index, value] of values.entries()) {
 		output = output + _htmlUnescape(String(value)) + strings[index + 1];
+	}
+
+	return output;
+}
+
+export function escapeComment(strings, ...values) {
+	if (typeof strings === 'string') {
+		return _commentEscape(strings);
+	}
+
+	let output = strings[0];
+	for (const [index, value] of values.entries()) {
+		output = output + _commentEscape(String(value)) + strings[index + 1];
 	}
 
 	return output;
